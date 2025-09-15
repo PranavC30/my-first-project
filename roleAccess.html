@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Role Access Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background: #f4f4f9;
+    }
+    select, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Role Based Access</h2>
+
+  <label for="roleSelect">Choose a role:</label>
+  <select id="roleSelect">
+    <option value="">-- Select Role --</option>
+    <option value="admin">Admin</option>
+    <option value="editor">Editor</option>
+    <option value="user">User</option>
+  </select>
+
+  <button onclick="checkRole()">Check Access</button>
+
+  <div id="output"></div>
+
+  <script>
+    function allowAllAccess() {
+      return "✅ Admin: Full access granted!";
+    }
+    function allowEditing() {
+      return "✏️ Editor: Editing access granted!";
+    }
+    function readOnly() {
+      return "👀 User: Read-only access granted!";
+    }
+
+    function checkRole() {
+      let role = document.getElementById("roleSelect").value;
+      let result = "";
+
+      if (role === "admin") {
+        result = allowAllAccess();
+      } else if (role === "editor") {
+        result = allowEditing();
+      } else if (role === "user") {
+        result = readOnly();
+      } else {
+        result = "❌ Please select a valid role!";
+      }
+
+      document.getElementById("output").innerText = result;
+    }
+  </script>
+</body>
+</html>
