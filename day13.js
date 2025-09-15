@@ -5,3 +5,4 @@ import demo1 from './utils.js'
 // console.log(pi,firstname,college , product)
 console.log(utils.pi)
 demo1()
+console.log('hi');
